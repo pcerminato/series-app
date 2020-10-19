@@ -9,4 +9,8 @@ export const EpisodeEl = styled.div`
   img {
     width: 100%;
   }
+
+  p {
+    text-align: justify;
+  }
 `;

@@ -25,7 +25,7 @@ function App() {
   const handleOnChange = (event) => {
     const value = event.target.value.toLowerCase();
 
-    if (value.trim() === "" && episodios.length !== episodiosAll.length) {
+    if (value.trim() === "") {
       setEpisodios(episodiosAll);
       return;
     }
