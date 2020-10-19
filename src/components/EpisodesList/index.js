@@ -2,7 +2,7 @@ import React from "react";
 import Episodio from "../Episodio";
 import { Container } from "./styled";
 
-export default ({ episodios }) => {
+export default ({ episodios, onItemClick }) => {
   return (
     <Container>
       {episodios.map(({ id, name, image, summary }) => {
@@ -14,6 +14,7 @@ export default ({ episodios }) => {
             image={image}
             summary={summary}
             medium={medium}
+            onClick={onItemClick}
           />
         );
       })}
