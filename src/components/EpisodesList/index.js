@@ -5,7 +5,8 @@ import { Container } from "./styled";
 export default ({ episodios, onItemClick }) => {
   return (
     <Container>
-      {episodios.map(({ id, name, image, summary }) => {
+      {episodios.map((episodio) => {
+        const { id, name, image, summary } = episodio;
         const { medium } = image;
         return (
           <Episodio
@@ -14,7 +15,7 @@ export default ({ episodios, onItemClick }) => {
             image={image}
             summary={summary}
             medium={medium}
-            onClick={onItemClick}
+            onClick={() => onItemClick(episodio)}
           />
         );
       })}

@@ -5,6 +5,7 @@ export const EpisodeEl = styled.div`
   width: 400px;
   max-width: 450px;
   padding: 10px;
+  cursor: pointer;
 
   img {
     width: 100%;

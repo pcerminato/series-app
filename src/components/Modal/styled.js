@@ -21,7 +21,6 @@ export const Container = styled.div`
 
   .modal > div {
     background-color: white;
-    max-width: 500px;
     padding: 25px;
     border-radius: 5px;
     text-align: center;

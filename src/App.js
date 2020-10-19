@@ -14,6 +14,7 @@ function App() {
   const [episodios, setEpisodios] = useState([]);
   const [episodiosAll, setEpisodiosAll] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [clickedEpisode, setClickedEpisode] = useState({});
 
   useEffect(() => {
     (() => {
@@ -26,6 +27,11 @@ function App() {
   }, []);
 
   const toggleModal = () => setIsModalVisible(!isModalVisible);
+
+  const handleItemClick = (episode) => {
+    toggleModal();
+    setClickedEpisode(episode);
+  };
 
   const handleOnChange = (event) => {
     const value = event.target.value.toLowerCase();
@@ -53,16 +59,14 @@ function App() {
           {episodios.length === 0 ? (
             <Loader />
           ) : (
-            <>
-              <EpisodesList episodios={episodios} onItemClick={toggleModal} />
-            </>
+            <EpisodesList episodios={episodios} onItemClick={handleItemClick} />
           )}
         </div>
       </div>
       {isModalVisible ? (
         <Modal>
           <>
-            <EpisodioDetalle />
+            <EpisodioDetalle {...clickedEpisode} />
             <button onClick={toggleModal}>Cerrar</button>
           </>
         </Modal>
