@@ -10,4 +10,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .nav-els {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+
+    & li {
+      margin-right: 1em;
+      display: inline;
+    }
+  }
 `;

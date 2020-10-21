@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Contador,
   Loader,
@@ -7,15 +7,33 @@ import {
   SearchBox,
   Modal,
   EpisodioDetalle,
-} from "./components";
+} from "../components";
+import { EpisodesContext } from "../datacontext/episodes";
+import { Link } from "@reach/router";
 
 export default () => {
+  const {
+    handleOnChange,
+    episodios,
+    handleItemClick,
+    isModalVisible,
+    clickedEpisode,
+    toggleModal,
+  } = useContext(EpisodesContext);
+
   return (
     <>
       <div style={{ fontSize: 30 }}>
         <NavBar>
           <SearchBox onChange={handleOnChange} />
-          <Contador cantidad={episodios.length} />
+          <ul class="nav-els">
+            <li>
+              <Contador cantidad={episodios.length} />
+            </li>
+            <li>
+              <Link to="/config">Config</Link>
+            </li>
+          </ul>
         </NavBar>
         <div style={{ marginTop: 100 }}>
           {episodios.length === 0 ? (
