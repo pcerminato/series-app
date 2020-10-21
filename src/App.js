@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllEpisodes } from "./services";
-import {
-  Contador,
-  Loader,
-  EpisodesList,
-  NavBar,
-  SearchBox,
-  Modal,
-  EpisodioDetalle,
-} from "./components";
+import { Router } from "@reach/router";
+import { EpisodesScreen } from "./screens";
 
 function App() {
   const [episodios, setEpisodios] = useState([]);
@@ -49,29 +42,9 @@ function App() {
   };
 
   return (
-    <>
-      <div style={{ fontSize: 30 }}>
-        <NavBar>
-          <SearchBox onChange={handleOnChange} />
-          <Contador cantidad={episodios.length} />
-        </NavBar>
-        <div style={{ marginTop: 100 }}>
-          {episodios.length === 0 ? (
-            <Loader />
-          ) : (
-            <EpisodesList episodios={episodios} onItemClick={handleItemClick} />
-          )}
-        </div>
-      </div>
-      {isModalVisible ? (
-        <Modal>
-          <>
-            <EpisodioDetalle {...clickedEpisode} />
-            <button onClick={toggleModal}>Cerrar</button>
-          </>
-        </Modal>
-      ) : null}
-    </>
+    <Router>
+      <EpisodesScreen path="/" />
+    </Router>
   );
 }
 
